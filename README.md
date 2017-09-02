@@ -7,8 +7,8 @@ PROJECT ENVIRONMENT
 PROJECT TERMS
 
 - PHASES:
-   - Input Processor: Input Source -> DataFrame(Panda)
-   - Data Processor: DataFrame -> OutputDataFrame
+   - Input Processor: No aggregation. Row Filtering. New columns. Columns manipulation
+   - Data Processor: Aggregation (DataReports)
    - Analytics Processor: OutputDataFrame -> AnalyticsDataFrame
    - Actions:
       - Alerts
