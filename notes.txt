@@ -1,0 +1,5 @@
+Autogenerate the requirements.txt, after that PyCharm takes care of managing new dependencies
+
+$ pip install pipreqs
+$ pipreqs /home/project/location
+Successfully saved requirements file in /home/project/location/requirements.txt
