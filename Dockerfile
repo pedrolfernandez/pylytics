@@ -5,4 +5,5 @@ ADD . /pylytics
 WORKDIR /pylytics/tests
 EXPOSE 5000
 ENV PYTHONPATH /pylytics/src/
-CMD ["python", "-m","unittest","test_inputFileProcessor.py"]
+#CMD ["python", "-m","unittest","test_inputFileProcessor.py"]
+CMD ["python", "app.py"]

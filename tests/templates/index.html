@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python Flask Bucket List App</title>
+
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>Generic Report Generator </h1>
+            <p class="lead"></p>
+            <p>
+                <form action = "http://localhost:5000/uploader" method = "POST"
+                 enctype = "multipart/form-data">
+                 <h5>Report Config File</h5>
+                 <input type = "file" name = "config" />
+                 <h5>Input CSV</h5>
+                 <input type = "file" name = "inputcsv" />
+                 <input type = "submit" />
+                </form>
+            </p>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; Pedro Luis Fernandez Moreno, 2017</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
