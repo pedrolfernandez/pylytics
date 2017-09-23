@@ -5,7 +5,8 @@ logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter('%(asctime)s - %(levelname)s : \n %(message)s')
 
-fh = logging.FileHandler('C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\debug-log.txt')
+#fh = logging.FileHandler('C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\debug-log.txt')
+fh = logging.FileHandler('/pylytics/res/testdata/debug-log.txt')
 fh.setLevel(logging.DEBUG)
 fh.setFormatter(formatter)
 logger.addHandler(fh)

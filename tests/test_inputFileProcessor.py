@@ -8,9 +8,13 @@ import configparser
 import matplotlib.pyplot as plt
 
 class TestInputFileProcessor(TestCase):
-    IN_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\call-export-Foo.csv'
-    OUT_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\gen-out-call-export-Foo.csv'
-    CONFIG_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\pylyticsFlow1.cfg'
+    #IN_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\call-export-Foo.csv'
+    #OUT_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\gen-out-call-export-Foo.csv'
+    #CONFIG_FILE = 'C:\\Users\\plfernandez\\PycharmProjects\\pylytics\\res\\testdata\\pylyticsFlow1.cfg'
+
+    CONFIG_FILE = '/pylytics/res/testdata/pylyticsFlow1.cfg'
+    OUT_FILE = '/pylytics/res/testdata/gen-out-call-export-Foo.csv'
+    IN_FILE = '/pylytics/res/testdata/call-export-Foo.csv'
 
     def test_processFile(self):
         # Input Processing

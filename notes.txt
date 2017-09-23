@@ -3,3 +3,22 @@ Autogenerate the requirements.txt, after that PyCharm takes care of managing new
 $ pip install pipreqs
 $ pipreqs /home/project/location
 Successfully saved requirements file in /home/project/location/requirements.txt
+
+
+First docker tests:
+
+docker run -i -t --rm python:3.6.2
+
+(rm -> container will be removed after quitting the session)
+
+docker build my image:
+C:\Users\plfernandez\PycharmProjects\pylytics (master)
+λ docker build -t plfernandez/pylytics .
+
+docker run my image:
+C:\Users\plfernandez\PycharmProjects\pylytics (master)
+λ docker run -p 5000:5000 plfernandez/pylytics
+
+On windows I need to run Xming server to get a GUI and see the graphs
+docker run -e DISPLAY=10.0.75.1:0 -p 5000:5000 plfernandez/pylytics
+(IP can be checked in the xming service log)
