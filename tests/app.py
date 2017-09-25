@@ -76,7 +76,7 @@ def upload_file():
         plt.xticks(rotation=45)
         plt.tight_layout()
         #plt.savefig(UPLOAD_FOLDER + 'datareport1.png')
-        plt.savefig(os.path.join(app.config['UPLOAD_FOLDER'],'datareport1.png'))
+        plt.savefig('/tmp/datareport1.png')
 
 
         return render_template('genreport.html', table=df.to_html())
@@ -85,8 +85,7 @@ def upload_file():
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+    return send_from_directory('/tmp/', filename)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=8080)
