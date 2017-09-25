@@ -83,4 +83,4 @@ def upload_file():
     return 'file uploaded successfully'
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080, , static_url_path = "static", static_folder="static")
+    app.run(debug=True, host='0.0.0.0', port=8080, static_url_path = "static", static_folder="static")
