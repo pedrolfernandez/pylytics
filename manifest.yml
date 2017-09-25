@@ -1,7 +1,7 @@
 ---
 memory: 192M
 instances: 1
-command: gunicorn -w 4 tests.app:app
+command: python tests/app.py
 env:
  GUNICORN_WORKERS: 44
 applications:
