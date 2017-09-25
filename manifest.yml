@@ -1,0 +1,12 @@
+---
+memory: 192M
+instances: 1
+command: python tests/app.py
+env:
+ GUNICORN_WORKERS: 44
+applications:
+ - name: app-pylytics 
+   env:
+     APP_DEBUG: 1
+     PYTHONPATH: ./src/
+  

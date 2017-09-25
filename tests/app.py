@@ -11,11 +11,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
-UPLOAD_FOLDER = '/pylytics/tests/static/'
+#UPLOAD_FOLDER = '/pylytics/tests/static/'
+#CONFIG_FILE = UPLOAD_FOLDER + 'pylyticsFlow1.cfg'
+#IN_FILE = UPLOAD_FOLDER + 'call-export-Foo.csv'
+#OUT_FILE = '/pylytics/res/testdata/gen-out-call-export-Foo.csv'
+
+# PATHS for Cloud Froundry
+UPLOAD_FOLDER = './res/'
 CONFIG_FILE = UPLOAD_FOLDER + 'pylyticsFlow1.cfg'
 IN_FILE = UPLOAD_FOLDER + 'call-export-Foo.csv'
-OUT_FILE = '/pylytics/res/testdata/gen-out-call-export-Foo.csv'
-
+OUT_FILE = './res/testdata/gen-out-call-export-Foo.csv'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -77,4 +82,4 @@ def upload_file():
     return 'file uploaded successfully'
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=8080)
