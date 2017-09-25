@@ -1,1 +1,1 @@
-web: python /pylytics/tests/app.py
+web: python tests/app.py
