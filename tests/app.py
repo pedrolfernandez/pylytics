@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 #OUT_FILE = '/pylytics/res/testdata/gen-out-call-export-Foo.csv'
 
 # PATHS for Cloud Froundry
-UPLOAD_FOLDER = './tests/static/'
+UPLOAD_FOLDER = './res/'
 CONFIG_FILE = UPLOAD_FOLDER + 'pylyticsFlow1.cfg'
 IN_FILE = UPLOAD_FOLDER + 'call-export-Foo.csv'
 OUT_FILE = './res/testdata/gen-out-call-export-Foo.csv'
