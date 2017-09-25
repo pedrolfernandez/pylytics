@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, send_from_directory
 import os
 from pylytics.input_processor.InputCSVFileProcessor import InputCSVFileProcessor
 from pylytics.input_processor.InputReport import InputReport
@@ -76,11 +76,17 @@ def upload_file():
         plt.xticks(rotation=45)
         plt.tight_layout()
         #plt.savefig(UPLOAD_FOLDER + 'datareport1.png')
-        plt.savefig('static/datareport1.png')
+        plt.savefig(os.path.join(app.config['UPLOAD_FOLDER'],'datareport1.png'))
+
 
         return render_template('genreport.html', table=df.to_html())
 
     return 'file uploaded successfully'
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080, static_folder="static")
+    app.run(debug=True, host='0.0.0.0', port=8080)
