@@ -75,11 +75,12 @@ def upload_file():
         plt.grid()
         plt.xticks(rotation=45)
         plt.tight_layout()
-        plt.savefig(UPLOAD_FOLDER + 'datareport1.png')
+        #plt.savefig(UPLOAD_FOLDER + 'datareport1.png')
+        plt.savefig('static/datareport1.png')
 
         return render_template('genreport.html', table=df.to_html())
 
     return 'file uploaded successfully'
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080, , static_url_path = "static", static_folder="static")

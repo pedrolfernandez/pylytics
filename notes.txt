@@ -1,11 +1,14 @@
-Autogenerate the requirements.txt, after that PyCharm takes care of managing new dependencies
 
+TESTS NOTES
+
+
+------ requirements.txt generation
 $ pip install pipreqs
 $ pipreqs /home/project/location
 Successfully saved requirements file in /home/project/location/requirements.txt
 
 
-First docker tests:
+------- Docker tests:
 
 docker run -i -t --rm python:3.6.2
 
@@ -19,9 +22,9 @@ docker run my image:
 C:\Users\plfernandez\PycharmProjects\pylytics (master)
 λ docker run -p 5000:5000 plfernandez/pylytics
 
-On windows I need to run Xming server to get a GUI and see the graphs
+(Windows) Run Xming server to get a GUI and see the graphs
 docker run -e DISPLAY=10.0.75.1:0 -p 5000:5000 plfernandez/pylytics
-(IP can be checked in the xming service log)
+(IP can be checked within the xming service log)
 
 
 Check existing images: docker images
@@ -41,7 +44,7 @@ plfernandez_registry
 
 OK
 
-To deploy my image in my Kubernetes cluster in Bluemix:
+Deploy image in my Kubernetes cluster in Bluemix:
 1. docker tag plfernandez/pylytics registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics:latest
 2. Push to my priv repository in Bluemix:
    docker push registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics:latest
@@ -127,10 +130,10 @@ Heapster is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system
 KubeDNS is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kube-dns/proxy
 kubernetes-dashboard is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy
 
-There I have the public IP and ht eport is 30314
+There I have the public IP and the eport is 30314
 
 
-Expose my deployment:
+---- Expose my deployment:
 1. Create deployment
 
 C:\Users\plfernandez\Desktop\bin
@@ -164,11 +167,10 @@ Session Affinity:       None
 Events:                 <none>
 
 
+--- Check pod logs via command line
 λ kubectl.exe logs deployment-pylytics-3536179684-nsdxn
-2017-09-24 10:43:12,572 - DEBUG :
 
 
-
-Before doing operation into Bluemix:
+---- Before performing operations into Bluemix:
 λ bx login
 λ bx cs init
