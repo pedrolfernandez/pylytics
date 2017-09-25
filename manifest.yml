@@ -8,4 +8,4 @@ applications:
  - name: app-pylytics
    env:
      APP_DEBUG: 1
-     PYTHONPATH: /pylytics/src/
+     PYTHONPATH: ./src/
