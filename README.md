@@ -10,7 +10,7 @@ In other terms, creating a generic report generator.
 The generic configuration is based on two phases, and each phase enables a set of specific features:
 - **Input Processing**
 	- Filter the input columns of the CSV to focus only on the columns of interest
-	- Alter the input columns (e.g. column in miliseconds to seconds, remove the @domain of a SIP URI, etc)
+	- Alter the input columns (e.g. column in milliseconds to seconds, remove the @domain of a SIP URI, etc)
 	- Define new columns (e.g. new column prefix by taking the first digits of a phone number column)
 	- Apply filtering (e.g. filter calls only with duration > 0 seconds)
 - **Report Generation**. It takes as input the result of the Input Processing phase. After defining a list of keys, we can apply a generic aggregation operation for any column of interest
@@ -19,11 +19,11 @@ I explain the above by using an example. Let's suppose we want to process the fo
 
 ![inputcsv](https://user-images.githubusercontent.com/26331744/30849616-32fa1cd2-a2a3-11e7-8018-2602cc883306.png)
 
-We can define a report to extract the number of calls and total spoken minutes, per minute, for the calls destinated to UK. The output report would look as follows:
+We can define a report to extract the number of calls and total spoken minutes, per minute, for the calls destinated to the UK. The output report would look as follows:
 
 ![generatedreport](https://user-images.githubusercontent.com/26331744/30849615-32a8a352-a2a3-11e7-818d-6a27f46d9daf.png)
 
-The related config to achieve the above purpose is very straighforward, see below. As we can see many different kind of reports can be defined to reach our analysis goals.
+The related config to achieve the above purpose is very straightforward, see below. As we can see many different kinds of reports can be defined to reach our analysis goals.
 
 ```
 # INPUT PROCESSING
