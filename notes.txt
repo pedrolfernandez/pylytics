@@ -14,18 +14,17 @@ docker run -i -t --rm python:3.6.2
 
 (rm -> container will be removed after quitting the session)
 
-docker build my image:
+docker - build my image:
 C:\Users\plfernandez\PycharmProjects\pylytics (master)
 λ docker build -t plfernandez/pylytics .
 
-docker run my image:
+docker - run my image:
 C:\Users\plfernandez\PycharmProjects\pylytics (master)
 λ docker run -p 5000:5000 plfernandez/pylytics
 
 (Windows) Run Xming server to get a GUI and see the graphs
 docker run -e DISPLAY=10.0.75.1:0 -p 5000:5000 plfernandez/pylytics
-(IP can be checked within the xming service log)
-
+(IP can be checked within xming service logs)
 
 Check existing images: docker images
 λ docker images
@@ -33,7 +32,7 @@ REPOSITORY                                                            TAG       
 plfernandez/pylytics                                                  latest              ebdb5fa4a9c2        42 minutes ago      976MB
 registry.ng.bluemix.net/default/pylytics                              latest              ebdb5fa4a9c2        42 minutes ago      976MB
 
-
+------- Kubernetes tests in Bluemix
 
 C:\Users\plfernandez\Desktop\bin
 λ bx cr namespace-list
@@ -45,10 +44,10 @@ plfernandez_registry
 OK
 
 Deploy image in my Kubernetes cluster in Bluemix:
-1. docker tag plfernandez/pylytics registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics:latest
+1. We tag the image results of the docker build command
+   docker tag plfernandez/pylytics registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics:latest
 2. Push to my priv repository in Bluemix:
    docker push registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics:latest
-
 
 C:\Users\plfernandez\Desktop\bin
 λ docker images
@@ -66,6 +65,7 @@ registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics     plfernande
 
 OK
 
+
 Checking my kubernetes cluster:
 C:\Users\plfernandez\Desktop\bin
 λ kubectl.exe get nodes
@@ -78,7 +78,6 @@ C:\Users\plfernandez\Desktop\bin
 λ kubectl proxy
 Starting to serve on 127.0.0.1:8001
 
-Then we create a new deployment
 
 --- Get deployment logs
 
@@ -98,50 +97,21 @@ app-pylytics-1096996769-x7kl0   0/1       Completed   3          1m
 C:\Users\plfernandez\Desktop\bin
 λ kubectl exec -it app-pylytics-1096996769-x7kl0 -- /bin/bash
 
-I want to expose the service publicly
 
-C:\Users\plfernandez\Desktop\bin
-λ kubectl get deployment
-NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-app-pylytics   1         1         1            1           10h
+---- Expose deployment + service from the command line:
 
-C:\Users\plfernandez\Desktop\bin
-λ kubectl expose deployment app-pylytics --type=NodePort --name=service-app-pylytics --port=5000
-service "service-app-pylytics" exposed
-
-λ kubectl describe services
-Name:                   service-app-pylytics
-Namespace:              default
-Labels:                 app=app-pylytics
-Annotations:            <none>
-Selector:               app=app-pylytics
-Type:                   NodePort
-IP:                     10.10.10.83
-Port:                   <unset> 5000/TCP
-NodePort:               <unset> 30314/TCP
-Endpoints:              172.30.209.203:5000
-Session Affinity:       None
-Events:                 <none>
-
-
-λ kubectl cluster-info
-Kubernetes master is running at https://184.173.44.62:21620
-Heapster is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/heapster/proxy
-KubeDNS is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kube-dns/proxy
-kubernetes-dashboard is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy
-
-There I have the public IP and the eport is 30314
-
-
----- Expose my deployment:
 1. Create deployment
 
 C:\Users\plfernandez\Desktop\bin
 λ kubectl.exe run deployment-pylytics --image=registry.ng.bluemix.net/plfernandez_registry/plfernandez/pylytics --port 5000
 deployment "deployment-pylytics" created
 
+λ kubectl get deployment
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+app-pylytics   1         1         1            1           10h
+
 2. Expose the service
-    λ kubectl expose deployment deployment-pylytics --type=NodePort --port=5000 --target-port=5000
+λ kubectl expose deployment deployment-pylytics --type=NodePort --port=5000 --target-port=5000
 service "deployment-pylytics" exposed
 
 3. Check the public ip of the cluster
@@ -150,6 +120,8 @@ Kubernetes master is running at https://184.173.44.62:21620
 Heapster is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/heapster/proxy
 KubeDNS is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kube-dns/proxy
 kubernetes-dashboard is running at https://184.173.44.62:21620/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy
+
+There we can see the public IP of our cluster
 
 4. Check the NodePort assigned
 λ kubectl describe services
@@ -166,6 +138,7 @@ Endpoints:
 Session Affinity:       None
 Events:                 <none>
 
+NodePort is the port exposed by the service
 
 --- Check pod logs via command line
 λ kubectl.exe logs deployment-pylytics-3536179684-nsdxn
