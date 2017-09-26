@@ -17,11 +17,11 @@ The generic configuration is based on two phases, and each phase enables a set o
 
 I explain the above by using an example. Let's suppose we want to process the following CSV file, which contains call detail records (CDRs) extracted from a phone system.
 
-![alt text](https://drive.google.com/open?id=0BzjkyMU06pAheVY0ZmhVUFZrd2c "Sample input CSV")
+![inputcsv](https://user-images.githubusercontent.com/26331744/30849616-32fa1cd2-a2a3-11e7-8018-2602cc883306.png)
 
 We can define a report to extract the number of calls and total spoken minutes, per minute, for the calls destinated to UK. The output report would look as follows:
 
-![alt text](https://drive.google.com/file/d/0BzjkyMU06pAhMnBHWFhvT09hR0k/view?usp=sharing "Generated Report")
+![generatedreport](https://user-images.githubusercontent.com/26331744/30849615-32a8a352-a2a3-11e7-818d-6a27f46d9daf.png)
 
 The related config to achieve the above purpose is very straighforward, see below. As we can see many different kind of reports can be defined to reach our analysis goals.
 
